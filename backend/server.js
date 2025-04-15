@@ -7,17 +7,22 @@ const authRoutes = require('./routes/authRoutes');
 const todoRoutes = require('./routes/todoRoutes');
 
 const app = express();
-const cors = require('cors');
-
+// CORS Setup
 const allowedOrigins = [process.env.FRONTEND_ORIGIN];
-
 app.use(cors({
   origin: allowedOrigins,
   credentials: true,
 }));
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', process.env.FRONTEND_ORIGIN);
+  res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  next();
+});
+
 // Middleware
-app.use(cors());
 app.use(express.json());
 
 // Database connection

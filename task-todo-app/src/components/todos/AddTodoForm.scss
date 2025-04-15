@@ -1,0 +1,15 @@
+.add-todo-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .add-todo-input {
+    flex: 1;
+  }
+  
+  @media (max-width: 480px) {
+    .add-todo-form {
+      flex-direction: column;
+    }
+  }

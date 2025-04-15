@@ -13,6 +13,10 @@ app.use(cors({
   origin: allowedOrigins,
   credentials: true,
 }));
+app.options('*', cors({
+  origin: process.env.FRONTEND_ORIGIN,
+  credentials: true,
+}));
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', process.env.FRONTEND_ORIGIN);

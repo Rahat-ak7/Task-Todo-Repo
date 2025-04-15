@@ -7,6 +7,14 @@ const authRoutes = require('./routes/authRoutes');
 const todoRoutes = require('./routes/todoRoutes');
 
 const app = express();
+const cors = require('cors');
+
+const allowedOrigins = [process.env.FRONTEND_ORIGIN];
+
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true,
+}));
 
 // Middleware
 app.use(cors());
